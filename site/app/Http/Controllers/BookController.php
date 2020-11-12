@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Book;
+use App\Models\Order;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class BookController extends Controller
 {
@@ -13,6 +15,11 @@ class BookController extends Controller
             ->with('sale')
             ->get();
 
-        return view('app.student.books.index', compact('books'));
+        $order = Order::where('user_id', '=', Auth::id())
+            ->get();
+
+        $order = $order->last();
+
+        return view('app.student.books.index', compact('books', 'order'));
     }
 }

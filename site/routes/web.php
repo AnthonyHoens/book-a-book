@@ -19,7 +19,17 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])
     ->name('home.page')
     ->middleware('auth');
 
-Route::delete('/', [App\Http\Controllers\OrderController::class, 'delete']);
+Route::post('/', [App\Http\Controllers\OrderBookController::class, 'store'])
+    ->name('order.book.store')
+    ->middleware('auth');
+
+Route::put('/', [App\Http\Controllers\OrderBookController::class, 'update'])
+    ->name('order.book.update')
+    ->middleware('auth');
+
+Route::delete('/', [App\Http\Controllers\OrderBookController::class, 'delete'])
+    ->name('order.book.delete')
+    ->middleware('auth');
 
 Route::get('/profil', function () {
    return redirect()->route('profile.show', Auth::user()->slug);
@@ -37,6 +47,10 @@ Route::get('/books', [App\Http\Controllers\BookController::class, 'index'])
     ->name('book.page')
     ->middleware('auth');
 
+Route::post('/books', [App\Http\Controllers\OrderBookController::class, 'store'])
+    ->name('order.book.store')
+    ->middleware('auth');
+
 Route::get('/books/{book}', [App\Http\Controllers\HomeController::class, 'show'])
     ->name('book.show')
     ->middleware('auth');
@@ -45,9 +59,13 @@ Route::get('/orders', [App\Http\Controllers\OrderController::class, 'index'])
     ->name('order.page')
     ->middleware('auth');
 
-Route::get('/orders/{order:order_number}', [App\Http\Controllers\OrderController::class, 'show'])
-    ->name('order.show')
-    ->middleware(['auth', 'can:view,order']);
+Route::put('/orders', [App\Http\Controllers\OrderBookController::class, 'update'])
+    ->name('order.book.update')
+    ->middleware('auth');
+
+Route::delete('/orders', [App\Http\Controllers\OrderBookController::class, 'delete'])
+    ->name('order.book.delete')
+    ->middleware('auth');
 
 Route::get('/history', [App\Http\Controllers\HistoryController::class, 'index'])
     ->name('history.page')

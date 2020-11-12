@@ -17,7 +17,14 @@ class Order extends Model
 
     public function books()
     {
-        return $this->belongsToMany(Book::class, OrderBook::class)->withPivot('quantity');
+        return $this->belongsToMany(Book::class, OrderBook::class)
+            ->whereNull('order_book.deleted_at')
+            ->withPivot('quantity');
+    }
+
+    public function getIdOfBooksAttribute()
+    {
+        return $this->books->pluck('id');
     }
 
     public function getIsAdminAttribute(): bool

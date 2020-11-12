@@ -285,7 +285,7 @@ hr {
     margin: 0;
 }
 
-.user, .message {
+.user, .message, .profil_flex .commands {
     display: inline-block;
     flex: 1;
     padding: 2rem 13.125rem 0;
@@ -482,6 +482,14 @@ hr {
     border-bottom: 1px solid #D1D1D1;
 }
 
+.profil_flex .order .book .img {
+    flex: 3;
+}
+
+.profil_flex .order .book .info {
+    flex: 7;
+}
+
 .order .book .img {
     width: 40%;
     height: 100%;
@@ -493,8 +501,9 @@ hr {
     width: 100%;
 }
 
-.order .book:last-of-type {
-    border: none;
+.order .book .edit_detail {
+    line-height: 1.2;
+    margin: 0.5rem 0 0.5rem;
 }
 
 .order .book h3 {
@@ -503,7 +512,7 @@ hr {
 
 .order .book h4 {
     font-size: 1rem;
-    font-weight: normal;
+    font-weight: 600;
     color: rgba(54,54,54,0.7);
     margin-bottom: 0.25rem;
 }
@@ -512,6 +521,8 @@ hr {
     display: block;
     width: 100%;
     padding: 0.5rem;
+    background-color: #E63B4A;
+    box-shadow: none;
 }
 
 .order .book .price {
@@ -521,13 +532,11 @@ hr {
 }
 
 .order .book .calculed_price {
+    width: 60%;
     font-size: 0.8rem;
     font-weight: 600;
 }
 
-.order .book .change_number {
-    max-width: 70%;
-}
 .order .book .change_number * {
     padding: 0;
     margin: 0;
@@ -577,9 +586,28 @@ input[type=submit] {
 .order .book_info_flex {
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
     margin: 1rem 0 0.5rem;
 }
 
+.order .total {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    color: #ACACAC;
+    margin-top: 1rem;
+}
+
+.order .total .text {
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.order .total .final_price {
+    font-size: 1rem;
+    font-style: italic;
+}

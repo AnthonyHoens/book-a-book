@@ -13,6 +13,10 @@ class OrderBook extends Model
 
     protected $table = 'order_book';
 
+    public function books()
+    {
+        return $this->hasOne(Book::class, 'id', 'book_id');
+    }
 
     public function getTotalPriceAttribute()
     {

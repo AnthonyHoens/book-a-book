@@ -17,6 +17,7 @@ class CreateOrdersTable extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained();
             $table->string('order_number');
+            $table->decimal('total_price')->default('0');
             $table->timestamp('validated_at')->nullable();
             $table->timestamps();
         });

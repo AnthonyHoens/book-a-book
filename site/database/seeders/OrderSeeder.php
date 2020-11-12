@@ -34,26 +34,62 @@ class OrderSeeder extends Seeder
         $countBook = Book::all()->count();
 
         foreach ($users as $user) {
-            $order = Order::create([
-                'user_id' => $user->id,
-                'order_number' => randomNumber(32),
-                'validated_at' => now(),
-            ]);
-            OrderBook::create([
-                'order_id' => $order->id,
-                'book_id' => rand(1, $countBook),
-                'quantity' => rand(1, 5),
-            ]);
-            OrderBook::create([
-                'order_id' => $order->id,
-                'book_id' => rand(1, $countBook),
-                'quantity' => rand(1, 5),
-            ]);
-            OrderBook::create([
-                'order_id' => $order->id,
-                'book_id' => rand(1, $countBook),
-                'quantity' => rand(1, 5),
-            ]);
+            $total = 0;
+
+
+            $order = new Order();
+            $order->user_id = $user->id;
+            $order->order_number = randomNumber(32);
+            $order->validated_at = now();
+            $order->save();
+
+
+            $randBook = rand(1, $countBook);
+
+            $newBook = new OrderBook();
+            $newBook->order_id = $order->id;
+            $newBook->book_id = $randBook;
+            $newBook->quantity = rand(1, 5);
+            $newBook->save();
+
+            $addToTotal = Book::with('sale')
+                ->where('id', '=', $newBook->book_id)
+                ->first();
+
+            $total += $addToTotal->sale->student_price * $newBook->quantity;
+
+
+            $randBook = rand(1, $countBook);
+
+            $newBook = new OrderBook();
+            $newBook->order_id = $order->id;
+            $newBook->book_id = $randBook;
+            $newBook->quantity = rand(1, 5);
+            $newBook->save();
+
+            $addToTotal = Book::with('sale')
+                ->where('id', '=', $newBook->book_id)
+                ->first();
+
+            $total += $addToTotal->sale->student_price * $newBook->quantity;
+
+
+            $randBook = rand(1, $countBook);
+
+            $newBook = new OrderBook();
+            $newBook->order_id = $order->id;
+            $newBook->book_id = $randBook;
+            $newBook->quantity = rand(1, 5);
+            $newBook->save();
+
+            $addToTotal = Book::with('sale')
+                ->where('id', '=', $newBook->book_id)
+                ->first();
+
+            $total += $addToTotal->sale->student_price * $newBook->quantity;
+
+            $order->total_price = $total;
+            $order->save();
         }
     }
 }

@@ -16,6 +16,7 @@ class OrderController extends Controller
             ->where('user_id', '=', Auth::id())
             ->get();
 
+
         return view('app.student.order.index', compact('orders'));
     }
 
@@ -25,15 +26,9 @@ class OrderController extends Controller
             ->where('order_number', '=', $order->order_number)
             ->first();
 
+
         return view('app.student.order.show', compact('orders'));
     }
 
-    public function update() {
-
-    }
-
-    public function delete() {
-
-    }
 
 }

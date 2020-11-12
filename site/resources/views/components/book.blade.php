@@ -4,7 +4,7 @@
             <img src="{{ asset('images/books/'. $book->cover_page) }}" alt="Première de couverture du livre '{{ $book->title }}'">
         </div>
     @endif
-    <div>
+    <div class="info">
         <h3 aria-level="3" role="heading">
             {{ $book->title }}
         </h3>
@@ -16,7 +16,7 @@
             </h4>
         @endif
         @if($description)
-            <p>
+            <p class="edit_detail">
                 {{ $book->edit_detail }}
             </p>
         @endif

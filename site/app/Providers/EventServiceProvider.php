@@ -3,7 +3,9 @@
 namespace App\Providers;
 
 use App\Events\AddBookToOrder;
+use App\Events\ModifyOrderEvent;
 use App\Listeners\AddRowToHistory;
+use App\Listeners\OrderModification;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -22,6 +24,9 @@ class EventServiceProvider extends ServiceProvider
         ],
         AddBookToOrder::class => [
             AddRowToHistory::class,
+        ],
+        ModifyOrderEvent::class => [
+            OrderModification::class,
         ],
         'App\Events\ModifyAccountEvent' => [
             'App\Listeners\AccountModificationHistory',

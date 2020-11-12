@@ -21,7 +21,12 @@ class HomeController extends Controller
             ->with('sale')
             ->get();
 
-        return view('app.student.home.index', compact('orders','books'));
+        $order = Order::where('user_id', '=', Auth::id())
+            ->get();
+
+        $order = $order->last();
+
+        return view('app.student.home.index', compact('orders','books', 'order'));
     }
 
 }

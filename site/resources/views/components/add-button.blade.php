@@ -1,15 +1,16 @@
-<div>
-    <form action="/" method=post">
-        @csrf
+@if(!$order->id_of_books->contains($book->id))
+    <div>
+        <form action="#" method="post">
+            @csrf
 
-        <div>
-            <noscript>
+            <div>
                 <label for="quantity">QTY</label>
-                <input type="number" name="quantity" id="quantity" value="">
-            </noscript>
+                <input type="number" name="quantity" id="quantity" value="1">
 
-            <input type="hidden" name="id" value="{{ $book->id }}">
-            <input type="submit" value="Ajouter">
-        </div>
-    </form>
-</div>
+                <input type="hidden" name="order_id" value="{{ $order->id }}">
+                <input type="hidden" name="book_id" value="{{ $book->id }}">
+                <input type="submit" value="Ajouter">
+            </div>
+        </form>
+    </div>
+@endif

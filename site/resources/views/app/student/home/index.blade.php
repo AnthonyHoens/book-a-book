@@ -14,7 +14,7 @@
                 </h2>
                 @foreach($books as $book)
                     <x-book :book="$book" :description="true">
-                        <x-add-button :book="$book"></x-add-button>
+                        <x-add-button :book="$book" :order="$order"></x-add-button>
                     </x-book>
                 @endforeach
             </section>

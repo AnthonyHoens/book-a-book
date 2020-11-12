@@ -23,8 +23,8 @@ class DatabaseSeeder extends Seeder
             StatutSeeder::class,
             NotificationSeeder::class,
             HistorySeeder::class,
-            OrderSeeder::class,
             SaleSeeder::class,
+            OrderSeeder::class,
             OrderStatutSeeder::class,
         ]);
     }

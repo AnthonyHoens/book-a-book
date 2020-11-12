@@ -7,14 +7,16 @@ use Illuminate\View\Component;
 class AddButton extends Component
 {
     public $book;
+    public $order;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($book)
+    public function __construct($book, $order)
     {
         $this->book = $book;
+        $this->order = $order;
     }
 
     /**
