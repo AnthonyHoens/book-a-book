@@ -24,13 +24,18 @@ class UserFactory extends Factory
 
     {
         $group = [
+            '2184',
+            '2185',
             '2284',
             '2285',
             '2384',
         ];
+        $name = $this->faker->lastName;
+        $firstName = $this->faker->firstName;
         return [
-            'name' => $this->faker->lastName,
-            'first_name' => $this->faker->firstName,
+            'name' => $name,
+            'first_name' => $firstName,
+            'slug' => Str::slug($name . ' ' . $firstName),
             'email' => $this->faker->unique()->safeEmail,
             'email_verified_at' => now(),
             'group' => $group[rand(0, count($group) - 1)],

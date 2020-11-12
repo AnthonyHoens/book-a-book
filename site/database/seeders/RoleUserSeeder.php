@@ -20,8 +20,12 @@ class RoleUserSeeder extends Seeder
             'role_id' => 1,
         ]);
         RoleUser::create([
-            'user_id' => 2,
+            'user_id' => 1,
             'role_id' => 2,
+        ]);
+        RoleUser::create([
+            'user_id' => 2,
+            'role_id' => 3,
         ]);
 
         $users = User::all();
@@ -30,7 +34,7 @@ class RoleUserSeeder extends Seeder
         foreach ($users as $user) {
             RoleUser::create([
                'user_id' => $user->id,
-               'role_id' => 2,
+               'role_id' => 3,
             ]);
         }
     }

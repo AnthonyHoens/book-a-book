@@ -16,18 +16,25 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
+        $name = 'Spirlet';
+        $firstName = 'Xavier';
         User::create([
             'name' => 'Spirlet',
             'first_name' => 'Xavier',
+            'slug' => Str::slug($name . ' ' . $firstName),
             'email' => 'spirlet.xavier@hepl.be',
             'email_verified_at' => now(),
             'password' => Hash::make('password'),
             'remember_token' => Str::random(10),
         ]);
 
+        $name = 'Hoens';
+        $firstName = 'Anthony';
         User::create([
             'name' => 'Hoens',
             'first_name' => 'Anthony',
+            'slug' => Str::slug($name . ' ' . $firstName),
+            'image' => 'image.png',
             'email' => 'hoens.anthony@student.hepl.be',
             'email_verified_at' => now(),
             'group' => '2285',

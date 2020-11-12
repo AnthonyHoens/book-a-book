@@ -9,7 +9,18 @@ class Book extends Model
 {
     use HasFactory;
 
-    public function remaining_books() {
-        return $this->belongsTo('App\Models\RemainingBook', 'book_id', 'id');
+    public function publishers()
+    {
+        return $this->hasMany(Publisher::class);
     }
+
+    public function authors()
+    {
+        return $this->belongsToMany(Author::class, 'book_author');
+    }
+
+    public function sale() {
+        return $this->hasOne(Sale::class);
+    }
+
 }

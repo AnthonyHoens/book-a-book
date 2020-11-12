@@ -6,6 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Auth;
 
 class User extends Authenticatable
 {
@@ -41,13 +42,32 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function notifications()
-    {
-        return $this->hasMany('App\Models\Notification', 'user_id', 'id');
+    public function roles() {
+        return $this->belongsToMany(Role::class);
     }
 
-    public function history()
+    public function histories()
     {
-        return $this->hasMany('App\Models\History', 'user_id', 'id');
+        return $this->hasMany(History::class);
+    }
+
+    public function notifications()
+    {
+        return $this->hasMany(Notification::class);
+    }
+
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
+
+    public function getIsAdminAttribute(): bool
+    {
+        return $this->roles->pluck('name')->contains('Admin');
+    }
+
+    public function getIsOrderAdminAttribute(): bool
+    {
+        return $this->orders->pluck('user_id')->contains(Auth::id());
     }
 }
