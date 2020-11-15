@@ -36,7 +36,6 @@ class UpdateBookInHistory
         $history->user_id = $event->user->id;
         $history->title = 'Livres';
         $history->message = 'Mise à jour de la quantité du livre "'. $bookTitle .'" de '. $event->oldQuantity .' exemplaires à '. $event->book->quantity .' exemplaires à votre commande.';
-        $history->created_at = Carbon::now('Europe/paris');
 
         $history->save();
     }

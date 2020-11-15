@@ -36,7 +36,6 @@ class DeleteBookInHistory
         $history->user_id = $event->user->id;
         $history->title = 'Livres';
         $history->message = 'Suppression du livre "'. $bookTitle .'" à votre commande.';
-        $history->created_at = Carbon::now('Europe/paris');
 
         $history->save();
     }

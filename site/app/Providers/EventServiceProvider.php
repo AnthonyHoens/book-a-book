@@ -5,8 +5,11 @@ namespace App\Providers;
 use App\Events\AddBookToOrderEvent;
 use App\Events\DeleteBookToOrderEvent;
 use App\Events\ModifyOrderEvent;
+use App\Events\NewUserEvent;
+use App\Events\RegistrationEvent;
 use App\Events\UpdateBookToOrderEvent;
 use App\Listeners\AddBookInHistory;
+use App\Listeners\AddNewUserInHistory;
 use App\Listeners\AddRowToHistory;
 use App\Listeners\DeleteBookInHistory;
 use App\Listeners\OrderModification;
@@ -39,6 +42,9 @@ class EventServiceProvider extends ServiceProvider
         DeleteBookToOrderEvent::class => [
             UpdatePriceInOrder::class,
             DeleteBookInHistory::class,
+        ],
+        NewUserEvent::class => [
+            AddNewUserInHistory::class,
         ],
         'App\Events\UpdateAccountEvent' => [
             'App\Listeners\UpdateUserInHistory',

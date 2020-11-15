@@ -6,7 +6,7 @@ use Illuminate\View\Component;
 
 class Order extends Component
 {
-    public $orders;
+    public $order;
     public $isdescription;
     public $isimage;
     /**
@@ -14,9 +14,9 @@ class Order extends Component
      *
      * @return void
      */
-    public function __construct($orders, $isdescription, $isimage)
+    public function __construct($order, $isdescription, $isimage)
     {
-        $this->orders = $orders;
+        $this->order = $order;
         $this->isdescription = $isdescription;
         $this->isimage = $isimage;
     }

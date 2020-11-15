@@ -36,7 +36,6 @@ class AddBookInHistory
         $history->user_id = $event->user->id;
         $history->title = 'Livres';
         $history->message = 'Ajout du livre "'. $bookTitle .'" à votre commande.';
-        $history->created_at = Carbon::now('Europe/paris');
 
         $history->save();
     }

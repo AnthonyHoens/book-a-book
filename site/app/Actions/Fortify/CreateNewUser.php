@@ -2,8 +2,11 @@
 
 namespace App\Actions\Fortify;
 
+use App\Events\NewUserEvent;
+use App\Events\RegistrationEvent;
 use App\Models\Order;
 use App\Models\User;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
@@ -45,6 +48,8 @@ class CreateNewUser implements CreatesNewUsers
             'email' => $input['email'],
             'password' => Hash::make($input['password']),
         ]);
+
+        event(new NewUserEvent($user));
 
         return $user;
     }

@@ -276,6 +276,17 @@ main {
     justify-content: flex-start;
 }
 
+.profil_flex .remove_link {
+    float: right;
+}
+
+.profil_flex .remove_link::after {
+    content: '';
+    display: block;
+    position: relative;
+    clear: both;
+}
+
 hr {
     transform: translateX(-2px);
     z-index: -1;
@@ -496,7 +507,7 @@ hr {
 }
 
 .book_flex .book {
-    width: calc(50% - 2.5rem);
+    width: calc(50% - 1.25rem);
 }
 
 .book {
@@ -508,6 +519,18 @@ hr {
     border-radius: 9px;
     background-color: #ffffff;
     box-shadow: 3px 3px 4px rgba(0,0,0,0.16);
+}
+
+.order_flex {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.order_flex .remove_link {
+    background-color: #E63B4A;
+    box-shadow: 0 3px 6px #E63B4A;
 }
 
 .order .book {
@@ -580,6 +603,11 @@ hr {
 .book .change_number * {
     padding: 0;
     margin: 0;
+}
+
+.book .change_number {
+    max-width: 15.375rem;
+    width: 100%;
 }
 
 .book .change_number div {

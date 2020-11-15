@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\History;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 
 class HistorySeeder extends Seeder

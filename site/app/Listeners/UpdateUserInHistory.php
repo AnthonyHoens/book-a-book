@@ -33,7 +33,6 @@ class UpdateUserInHistory
         $history->user_id = $event->user->id;
         $history->title = 'Compte';
         $history->message = 'Vous venez de mettre à jour votre profil.';
-        $history->created_at = Carbon::now('Europe/paris');
 
         $history->save();
     }
