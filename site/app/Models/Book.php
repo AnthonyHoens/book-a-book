@@ -24,4 +24,8 @@ class Book extends Model
         return $this->hasOne(Sale::class);
     }
 
+    public function getReduceDetailAttribute() : string
+    {
+        return substr($this->edit_detail, 0, 150) . '...';
+    }
 }

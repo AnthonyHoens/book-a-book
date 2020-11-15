@@ -2,10 +2,16 @@
 
 namespace App\Providers;
 
-use App\Events\AddBookToOrder;
+use App\Events\AddBookToOrderEvent;
+use App\Events\DeleteBookToOrderEvent;
 use App\Events\ModifyOrderEvent;
+use App\Events\UpdateBookToOrderEvent;
+use App\Listeners\AddBookInHistory;
 use App\Listeners\AddRowToHistory;
+use App\Listeners\DeleteBookInHistory;
 use App\Listeners\OrderModification;
+use App\Listeners\UpdateBookInHistory;
+use App\Listeners\UpdatePriceInOrder;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -22,14 +28,20 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
-        AddBookToOrder::class => [
-            AddRowToHistory::class,
+        AddBookToOrderEvent::class => [
+            UpdatePriceInOrder::class,
+            AddBookInHistory::class,
         ],
-        ModifyOrderEvent::class => [
-            OrderModification::class,
+        UpdateBookToOrderEvent::class => [
+            UpdatePriceInOrder::class,
+            UpdateBookInHistory::class,
         ],
-        'App\Events\ModifyAccountEvent' => [
-            'App\Listeners\AccountModificationHistory',
+        DeleteBookToOrderEvent::class => [
+            UpdatePriceInOrder::class,
+            DeleteBookInHistory::class,
+        ],
+        'App\Events\UpdateAccountEvent' => [
+            'App\Listeners\UpdateUserInHistory',
         ],
     ];
 

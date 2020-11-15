@@ -8,16 +8,18 @@ class Book extends Component
 {
     public $book;
     public $description;
+    public $image;
 
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($book, $description)
+    public function __construct($book, $description, $image)
     {
         $this->book = $book;
         $this->description = $description;
+        $this->image = $image;
     }
 
     /**

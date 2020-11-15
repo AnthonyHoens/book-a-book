@@ -1,6 +1,7 @@
+@if($order)
 @if(!$order->id_of_books->contains($book->id))
-    <div>
-        <form action="#" method="post">
+    <div class="book_info_flex">
+        <form action="#" method="post" class="change_number">
             @csrf
 
             <div>
@@ -9,8 +10,11 @@
 
                 <input type="hidden" name="order_id" value="{{ $order->id }}">
                 <input type="hidden" name="book_id" value="{{ $book->id }}">
-                <input type="submit" value="Ajouter">
+                <input type="submit" class="link" value="Ajouter">
             </div>
         </form>
     </div>
+    @else
 @endif
+@endif
+

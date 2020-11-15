@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 
-use App\Events\ModifyAccountEvent;
+use App\Events\UpdateAccountEvent;
 use App\Http\Requests\UpdateProfilRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -27,7 +27,7 @@ class ProfilController extends Controller
 
         $user->save();
 
-        event(new ModifyAccountEvent($user));
+        event(new UpdateAccountEvent($user));
 
         return redirect(route('profile.show', $user->slug));
     }

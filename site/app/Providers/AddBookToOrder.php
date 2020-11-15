@@ -1,7 +1,6 @@
 <?php
 
-namespace App\Events;
-
+namespace App\Providers;
 
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
@@ -15,16 +14,14 @@ class AddBookToOrder
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    public $user;
-
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct($user)
+    public function __construct()
     {
-        $this->user = $user;
+        //
     }
 
     /**

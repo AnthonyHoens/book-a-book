@@ -10,20 +10,27 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class ModifyAccountEvent
+class UpdateBookToOrderEvent
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
+    public $orderID;
     public $user;
+    public $book;
+    public $oldQuantity;
+
 
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct($user)
+    public function __construct($orderID, $user, $book, $oldQuantity)
     {
+        $this->orderID = $orderID;
         $this->user = $user;
+        $this->book = $book;
+        $this->oldQuantity = $oldQuantity;
     }
 
     /**

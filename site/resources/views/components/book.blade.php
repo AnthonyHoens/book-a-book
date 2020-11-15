@@ -1,8 +1,10 @@
 <section class="book">
     @if($book->cover_page)
-        <div class="img">
-            <img src="{{ asset('images/books/'. $book->cover_page) }}" alt="Première de couverture du livre '{{ $book->title }}'">
-        </div>
+        @if($image)
+            <div class="img">
+                <img src="{{ asset('images/books/'. $book->cover_page) }}" alt="Première de couverture du livre '{{ $book->title }}'">
+            </div>
+        @endif
     @endif
     <div class="info">
         <h3 aria-level="3" role="heading">
@@ -17,7 +19,7 @@
         @endif
         @if($description)
             <p class="edit_detail">
-                {{ $book->edit_detail }}
+                {{ $book->reduce_detail }}
             </p>
         @endif
         <p class="price">

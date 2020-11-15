@@ -2,12 +2,13 @@
 
 namespace App\Listeners;
 
-use App\Events\AddBookToOrder;
+use App\Events\UpdateAccountEvent;
 use App\Models\History;
+use Carbon\Carbon;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 
-class AddRowToHistory
+class UpdateUserInHistory
 {
     /**
      * Create the event listener.
@@ -22,16 +23,17 @@ class AddRowToHistory
     /**
      * Handle the event.
      *
-     * @param  AddBookToOrder  $event
+     * @param  UpdateAccountEvent  $event
      * @return void
      */
-    public function handle(AddBookToOrder $event)
+    public function handle(UpdateAccountEvent $event)
     {
         $history = new History();
 
-        $history->user_id = $event->user;
-        $history->title = 'Livres';
-        $history->message = 'Ajout du livre dans la commande';
+        $history->user_id = $event->user->id;
+        $history->title = 'Compte';
+        $history->message = 'Vous venez de mettre à jour votre profil.';
+        $history->created_at = Carbon::now('Europe/paris');
 
         $history->save();
     }

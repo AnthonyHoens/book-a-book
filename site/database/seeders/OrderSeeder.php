@@ -8,9 +8,11 @@ use App\Models\OrderBook;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
+use App\Traits\OrderNumber;
 
 class OrderSeeder extends Seeder
 {
+    use OrderNumber;
     /**
      * Run the database seeds.
      *
@@ -18,28 +20,15 @@ class OrderSeeder extends Seeder
      */
     public function run()
     {
-        function randomNumber($count) :string {
-            $number = 0;
-
-            for($i = 0; $i < $count; $i++) {
-                $rand = rand(0,9);
-                $number = $number . strval($rand);
-            }
-
-            return $number;
-        }
-
-
         $users = User::all();
         $countBook = Book::all()->count();
 
         foreach ($users as $user) {
             $total = 0;
 
-
             $order = new Order();
             $order->user_id = $user->id;
-            $order->order_number = randomNumber(32);
+            $order->order_number = $this->randomNumber(32);
             $order->validated_at = now();
             $order->save();
 

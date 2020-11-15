@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\AddBookToOrderEvent;
+use App\Events\DeleteBookToOrderEvent;
 use App\Events\ModifyOrderEvent;
+use App\Events\UpdateBookToOrderEvent;
 use App\Models\Book;
 use App\Models\Order;
 use App\Models\OrderBook;
@@ -21,9 +24,13 @@ class OrderBookController extends Controller
 
         $book->save();
 
-        event(new ModifyOrderEvent(\request('order_id')));
+        event(new AddBookToOrderEvent(\request('order_id'), \request()->user(), $book));
 
-        return redirect()->route('home.page');
+        if(\request()->routeIs('book.page.book.store')) {
+            return redirect()->route('book.page');
+        } else {
+            return redirect()->route('home.page');
+        }
     }
 
     public function update()
@@ -31,13 +38,18 @@ class OrderBookController extends Controller
         $book = OrderBook::where('book_id', '=', \request('book_id'))
             ->where('order_id', '=', \request('order_id'))
             ->first();
+        $oldQuantity = $book->quantity;
 
         $book->quantity = \request('quantity');
         $book->save();
 
-        event(new ModifyOrderEvent(\request('order_id')));
+        event(new UpdateBookToOrderEvent(\request('order_id'), \request()->user(), $book, $oldQuantity));
 
-        return redirect()->route('home.page');
+        if(\request()->routeIs('order.page.book.update')) {
+            return redirect()->route('order.page');
+        } else {
+            return redirect()->route('home.page');
+        }
     }
 
     public function delete()
@@ -48,8 +60,12 @@ class OrderBookController extends Controller
 
         $book->delete();
 
-        event(new ModifyOrderEvent(\request('order_id')));
+        event(new DeleteBookToOrderEvent(\request('order_id'), \request()->user(), $book));
 
-        return redirect()->route('home.page');
+        if(\request()->routeIs('order.page.book.delete')) {
+            return redirect()->route('order.page');
+        } else {
+            return redirect()->route('home.page');
+        }
     }
 }

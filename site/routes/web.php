@@ -20,15 +20,15 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])
     ->middleware('auth');
 
 Route::post('/', [App\Http\Controllers\OrderBookController::class, 'store'])
-    ->name('order.book.store')
+    ->name('home.page.book.store')
     ->middleware('auth');
 
 Route::put('/', [App\Http\Controllers\OrderBookController::class, 'update'])
-    ->name('order.book.update')
+    ->name('home.page.book.update')
     ->middleware('auth');
 
 Route::delete('/', [App\Http\Controllers\OrderBookController::class, 'delete'])
-    ->name('order.book.delete')
+    ->name('home.page.book.delete')
     ->middleware('auth');
 
 Route::get('/profil', function () {
@@ -48,10 +48,10 @@ Route::get('/books', [App\Http\Controllers\BookController::class, 'index'])
     ->middleware('auth');
 
 Route::post('/books', [App\Http\Controllers\OrderBookController::class, 'store'])
-    ->name('order.book.store')
+    ->name('book.page.book.store')
     ->middleware('auth');
 
-Route::get('/books/{book}', [App\Http\Controllers\HomeController::class, 'show'])
+Route::get('/books/{book:isbn}', [App\Http\Controllers\BookController::class, 'show'])
     ->name('book.show')
     ->middleware('auth');
 
@@ -60,11 +60,11 @@ Route::get('/orders', [App\Http\Controllers\OrderController::class, 'index'])
     ->middleware('auth');
 
 Route::put('/orders', [App\Http\Controllers\OrderBookController::class, 'update'])
-    ->name('order.book.update')
+    ->name('order.page.book.update')
     ->middleware('auth');
 
 Route::delete('/orders', [App\Http\Controllers\OrderBookController::class, 'delete'])
-    ->name('order.book.delete')
+    ->name('order.page.book.delete')
     ->middleware('auth');
 
 Route::get('/history', [App\Http\Controllers\HistoryController::class, 'index'])

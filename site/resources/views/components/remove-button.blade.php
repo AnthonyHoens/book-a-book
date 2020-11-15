@@ -10,7 +10,7 @@
 
         <input type="hidden" name="order_id" value="{{ $order->id }}">
         <input type="hidden" name="book_id" value="{{ $book->id }}">
-        <input type="submit" value="Supprimez ce livre" class="link special_link">
+        <input type="submit" value="Supprimez ce livre" class="link remove_link">
     </div>
 </form>
 

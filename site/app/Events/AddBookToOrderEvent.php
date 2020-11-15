@@ -10,19 +10,24 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class ModifyOrderEvent
+class AddBookToOrderEvent
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
     public $orderID;
+    public $user;
+    public $book;
+
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct($orderID)
+    public function __construct($orderID, $user, $book)
     {
         $this->orderID = $orderID;
+        $this->user = $user;
+        $this->book = $book;
     }
 
     /**

@@ -8,15 +8,17 @@ class Order extends Component
 {
     public $orders;
     public $isdescription;
+    public $isimage;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($orders, $isdescription)
+    public function __construct($orders, $isdescription, $isimage)
     {
         $this->orders = $orders;
         $this->isdescription = $isdescription;
+        $this->isimage = $isimage;
     }
 
     /**

@@ -22,4 +22,9 @@ class BookController extends Controller
 
         return view('app.student.books.index', compact('books', 'order'));
     }
+
+    public function show(Book $book)
+    {
+        return view('app.student.books.show', compact('book'));
+    }
 }

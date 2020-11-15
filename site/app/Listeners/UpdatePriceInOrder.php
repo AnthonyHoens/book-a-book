@@ -2,14 +2,13 @@
 
 namespace App\Listeners;
 
-use App\Events\ModifyOrderEvent;
-use App\Models\Book;
+use App\Events\AddBookToOrderEvent;
 use App\Models\Order;
 use App\Models\OrderBook;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 
-class OrderModification
+class UpdatePriceInOrder
 {
     /**
      * Create the event listener.
@@ -24,26 +23,24 @@ class OrderModification
     /**
      * Handle the event.
      *
-     * @param  ModifyOrderEvent  $event
+     * @param  AddBookToOrderEvent  $event
      * @return void
      */
-    public function handle(ModifyOrderEvent $event)
+    public function handle($event)
     {
         $orderBooks = OrderBook::with('books.sale')
             ->where('order_id', '=', $event->orderID)
             ->get();
 
-        $order = Order::where('id', '=', $event->orderID)
-            ->first();
-
         $total = 0;
 
         foreach ($orderBooks as $book) {
             $price = $book->books->sale->student_price;
-
             $total += $price * $book->quantity;
         }
 
+        $order = Order::where('id', '=', $event->orderID)
+            ->first();
         $order->total_price = $total;
         $order->save();
     }
