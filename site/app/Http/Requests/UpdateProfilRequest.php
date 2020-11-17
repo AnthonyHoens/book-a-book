@@ -27,7 +27,7 @@ class UpdateProfilRequest extends FormRequest
             'name' => 'required|string|max:150|alpha',
             'firstName' => 'required|string|max:150|alpha',
             'email' => 'required|email:rfc',
-            'group' => 'required|string|digits:4|numeric',
+            'group' => '',
         ];
     }
 }

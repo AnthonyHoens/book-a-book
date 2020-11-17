@@ -6,7 +6,7 @@
     </div>
     <div class="profil_img">
         <a href="{{ route('profile.show', \Illuminate\Support\Facades\Auth::user()->slug) }}">
-            <img src="{{ asset('images/users/image.jpg') }}" alt="Photo de profil de {{ $user->first_name . ' ' . $user->name }}">
+            <img src="{{ asset('images/users/small/' . \Illuminate\Support\Facades\Auth::user()->image) }}" alt="Photo de profil de {{ $user->first_name . ' ' . $user->name }}">
         </a>
     </div>
     <div class="content">

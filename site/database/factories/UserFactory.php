@@ -24,13 +24,6 @@ class UserFactory extends Factory
     public function definition()
 
     {
-        $group = [
-            '2184',
-            '2185',
-            '2284',
-            '2285',
-            '2384',
-        ];
         $name = $this->faker->lastName;
         $firstName = $this->faker->firstName;
         return [
@@ -39,7 +32,6 @@ class UserFactory extends Factory
             'slug' => Str::slug($name . ' ' . $firstName),
             'email' => $this->faker->unique()->safeEmail,
             'email_verified_at' => now(),
-            'group' => $group[rand(0, count($group) - 1)],
             'password' => Hash::make('password'), // password
             'remember_token' => Str::random(10),
         ];

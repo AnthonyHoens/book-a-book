@@ -17,7 +17,7 @@
                 </p>
                 <p>
                     <span>
-                        {{ $user->group }}
+                        {{ $user->group->number }}
                     </span>
                 </p>
             </div>
@@ -53,14 +53,28 @@
             @enderror
         </div>
 
-        <div class="field">
+        <div class="custom-select" style="width: 333px">
             <label for="group">{{ __('Groupe') }}</label>
-            <input type="text" id="group" name="group" value="{{ $user->group }}">
-            @error('group')
-                <p class="error">
-                    {{ $message }}
-                </p>
-            @enderror
+            <noscript>
+                <select name="group" id="group" class="show">
+                    @foreach($groups as $group)
+                        <option value="{{ $group->id }}"
+                                @if($group->number == $user->group->number)
+                                selected
+                            @endif
+                        >{{ $group->number }}</option>
+                    @endforeach
+                </select>
+            </noscript>
+            <select name="group" id="group">
+                @foreach($groups as $group)
+                    <option value="{{ $group->id }}"
+                    @if($group->number == $user->group->number)
+                        selected
+                    @endif
+                        >{{ $group->number }}</option>
+                @endforeach
+            </select>
         </div>
 
         <div class="field">

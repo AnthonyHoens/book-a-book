@@ -8,4 +8,8 @@
             <x-message :message="$message"></x-message>
         @endforeach
     </div>
+
+    <div>
+        {{ $histories->links() }}
+    </div>
 </section>

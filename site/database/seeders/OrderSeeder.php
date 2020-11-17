@@ -29,7 +29,7 @@ class OrderSeeder extends Seeder
             $order = new Order();
             $order->user_id = $user->id;
             $order->order_number = $this->randomNumber(32);
-            $order->validated_at = now();
+            $order->validated_at = null;
             $order->save();
 
 

@@ -1,30 +1,41 @@
-@php $n = 0 @endphp
-<section class="orders commands">
-    <h2 role="heading" aria-level="2" class="title">
-        Ma commande
-    </h2>
-
-    @php ++$n; @endphp
-    <section class="order">
-        <h3 role="heading" aria-level="3">
-            Commande n° {{ $n }}
-        </h3>
-
-        <p class="order_number">
-            Numéro de commande: {{ $order->order_number }}
-        </p>
-        @if(count($order->books) == 0)
-            <p>
-                {{ __('Vous n\'avez pas encore de livres dans votre commande') }}
-            </p>
+<section class="order">
+    <h3 role="heading" aria-level="3">
+        @if(request()->routeIs('order.show', $order->order_number))
+            Commande n° {{ $order->number_of_order_by_user }}
         @else
-            @foreach($order->books as $book)
-                <x-book description="{{ $isdescription }}" :book="$book" :image="$isimage">
+            <a href="{{ route('order.show', $order->order_number) }}">Commande n° {{ $order->number_of_order_by_user }}</a>
+        @endif
+    </h3>
+
+    <p class="order_number">
+        @if(request()->routeIs('order.show', $order->order_number))
+            Numéro de commande: {{ $order->order_number }}
+        @else
+            <a href="{{ route('order.show', $order->order_number) }}">Numéro de commande: {{ $order->order_number }}</a>
+        @endif
+    </p>
+    @if(count($order->books) == 0)
+        <p class="no_book">
+            {{ __('Vous n\'avez pas encore de livres dans votre commande') }}
+        </p>
+    @else
+        @foreach($order->books as $book)
+            <x-book description="{{ $isdescription }}" :book="$book" :image="$isimage">
+                @if($order->validated_at)
                     <div class="book_info_flex">
                         <p class="calculed_price">
                             {{ $book->sale->student_price * $book->pivot->quantity }} &euro;
                         </p>
-                        <form action="#" method="post" class="change_number">
+                        <p class="quantity">
+                            {{ $book->pivot->quantity }} exemplaires
+                        </p>
+                    </div>
+                @else
+                    <div class="book_info_flex">
+                        <p class="calculed_price">
+                            {{ $book->sale->student_price * $book->pivot->quantity }} &euro;
+                        </p>
+                        <form action="{{ route('book_order.update') }}" method="post" class="change_number">
                             @csrf
                             @method('put')
 
@@ -38,17 +49,18 @@
                         </form>
                     </div>
                     <x-remove-button :book="$book" :order="$order"></x-remove-button>
-                </x-book>
-            @endforeach
-        @endif
-        <div class="total">
-            <p class="text">
-                Total
-            </p>
-            <p class="final_price">
-                {{ $order->total_price }} &euro;
-            </p>
-        </div>
-    </section>
-    {{ $slot }}
+                @endif
+            </x-book>
+        @endforeach
+    @endif
+    <div class="total">
+        <p class="text">
+            Total
+        </p>
+        <p class="final_price">
+            {{ $order->total_price }} &euro;
+        </p>
+    </div>
 </section>
+{{ $slot }}
+

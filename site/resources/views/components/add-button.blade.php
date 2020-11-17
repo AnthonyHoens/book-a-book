@@ -1,7 +1,7 @@
 @if($order)
 @if(!$order->id_of_books->contains($book->id))
     <div class="book_info_flex">
-        <form action="#" method="post" class="change_number">
+        <form action="{{ route('book_order.store') }}" method="post" class="change_number">
             @csrf
 
             <div>

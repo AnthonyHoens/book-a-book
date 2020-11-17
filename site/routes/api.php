@@ -20,5 +20,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('/test', function (){
-   return \App\Models\Book::with('sale')->first();
+   return \App\Models\Group::with('books')->get();
 });

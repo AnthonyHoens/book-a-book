@@ -22,6 +22,7 @@ class User extends Authenticatable
         'first_name',
         'slug',
         'email',
+        'group',
         'password',
     ];
 
@@ -43,6 +44,10 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function group() {
+        return $this->hasOneThrough(Group::class, GroupUser::class, 'user_id', 'id', 'id', 'group_id');
+    }
 
     public function roles() {
         return $this->belongsToMany(Role::class);

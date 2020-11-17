@@ -26,6 +26,9 @@ class DatabaseSeeder extends Seeder
             SaleSeeder::class,
             OrderSeeder::class,
             OrderStatutSeeder::class,
+            GroupSeeder::class,
+            GroupUserSeeder::class,
+            ObligatoryBooksSeeder::class,
         ]);
     }
 }

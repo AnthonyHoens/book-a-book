@@ -14,7 +14,7 @@ class HistoryController extends Controller
     public function index() {
         $histories = History::orderByDesc('created_at')
             ->where('user_id', '=', Auth::id())
-            ->get();
+            ->paginate(10);
 
         return view('app.student.history.index', compact('histories'));
     }

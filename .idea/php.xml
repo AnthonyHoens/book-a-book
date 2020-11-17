@@ -118,6 +118,11 @@
       <path value="$PROJECT_DIR$/site/vendor/symfony/debug" />
       <path value="$PROJECT_DIR$/site/vendor/maximebf/debugbar" />
       <path value="$PROJECT_DIR$/site/vendor/barryvdh/laravel-debugbar" />
+      <path value="$PROJECT_DIR$/site/vendor/intervention/image" />
+      <path value="$PROJECT_DIR$/site/vendor/spatie/temporary-directory" />
+      <path value="$PROJECT_DIR$/site/vendor/spatie/image-optimizer" />
+      <path value="$PROJECT_DIR$/site/vendor/spatie/image" />
+      <path value="$PROJECT_DIR$/site/vendor/league/glide" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.3" />

@@ -32,11 +32,13 @@
       <excludeFolder url="file://$MODULE_DIR$/site/vendor/guzzlehttp/promises" />
       <excludeFolder url="file://$MODULE_DIR$/site/vendor/guzzlehttp/psr7" />
       <excludeFolder url="file://$MODULE_DIR$/site/vendor/hamcrest/hamcrest-php" />
+      <excludeFolder url="file://$MODULE_DIR$/site/vendor/intervention/image" />
       <excludeFolder url="file://$MODULE_DIR$/site/vendor/laravel/fortify" />
       <excludeFolder url="file://$MODULE_DIR$/site/vendor/laravel/framework" />
       <excludeFolder url="file://$MODULE_DIR$/site/vendor/laravel/tinker" />
       <excludeFolder url="file://$MODULE_DIR$/site/vendor/league/commonmark" />
       <excludeFolder url="file://$MODULE_DIR$/site/vendor/league/flysystem" />
+      <excludeFolder url="file://$MODULE_DIR$/site/vendor/league/glide" />
       <excludeFolder url="file://$MODULE_DIR$/site/vendor/league/mime-type-detection" />
       <excludeFolder url="file://$MODULE_DIR$/site/vendor/maximebf/debugbar" />
       <excludeFolder url="file://$MODULE_DIR$/site/vendor/mockery/mockery" />
@@ -89,6 +91,9 @@
       <excludeFolder url="file://$MODULE_DIR$/site/vendor/sebastian/resource-operations" />
       <excludeFolder url="file://$MODULE_DIR$/site/vendor/sebastian/type" />
       <excludeFolder url="file://$MODULE_DIR$/site/vendor/sebastian/version" />
+      <excludeFolder url="file://$MODULE_DIR$/site/vendor/spatie/image" />
+      <excludeFolder url="file://$MODULE_DIR$/site/vendor/spatie/image-optimizer" />
+      <excludeFolder url="file://$MODULE_DIR$/site/vendor/spatie/temporary-directory" />
       <excludeFolder url="file://$MODULE_DIR$/site/vendor/swiftmailer/swiftmailer" />
       <excludeFolder url="file://$MODULE_DIR$/site/vendor/symfony/console" />
       <excludeFolder url="file://$MODULE_DIR$/site/vendor/symfony/css-selector" />

@@ -7,14 +7,16 @@ use Illuminate\View\Component;
 class ProfilUser extends Component
 {
     public $user;
+    public $groups;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($user)
+    public function __construct($user, $groups)
     {
         $this->user = $user;
+        $this->groups = $groups;
     }
 
     /**

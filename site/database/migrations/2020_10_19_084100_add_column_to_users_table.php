@@ -20,10 +20,6 @@ class AddColumnToUsersTable extends Migration
             $table->string('slug')
                 ->after('first_name');
 
-            $table->integer('group')
-                ->after('first_name')
-                ->nullable();
-
             $table->string('image')
                 ->after('email')
                 ->nullable();

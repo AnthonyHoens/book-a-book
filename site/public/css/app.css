@@ -55,6 +55,7 @@ html {
     font-family: 'Open Sans', sans-serif;
     font-style: normal;
     font-size: 16px;
+    color: #363636;
     background-color: #F6F6F6;
 }
 
@@ -138,6 +139,10 @@ header .profil_info {
     align-items: center;
 }
 
+strong {
+    font-weight: 600;
+}
+
 header form {
     width: 40%;
     min-width: 10rem;
@@ -175,6 +180,30 @@ main {
     padding: 3.125rem 0;
 }
 
+.orders .margin_link {
+    margin-bottom: 3rem;
+}
+
+.quantity {
+    font-size: 0.8rem;
+    font-weight: 600;
+    font-style: italic;
+}
+
+.clotured {
+    width: 100%;
+    padding: 1rem;
+    color: #ffffff;
+    background-color: #50DB1F;
+    margin-bottom: 1.5rem;
+    border-radius: 9px;
+}
+
+.order h3 a, .order .order_number a {
+    text-decoration: none;
+    color: #363636;
+}
+
 .content {
     display: flex;
     justify-content: flex-end;
@@ -189,10 +218,14 @@ main {
 .profil .icons {
     margin-right: 1rem;
 }
-.content .profil_img {
+.profil_img {
     width: 2.5rem;
     height: 2.5rem;
     border-radius: 99999px;
+    overflow: hidden;
+}
+.profil_img img  {
+    width: 100%;
 }
 .content .notifications {
     height: 100%;
@@ -337,6 +370,7 @@ hr {
 
 .user__img {
     min-width: 8.125rem;
+    max-width: 9.375rem;
     border-radius: 9999px;
     margin-right: 2.5rem;
     overflow: hidden;
@@ -378,14 +412,16 @@ hr {
     margin-left: 2.5rem;
 }
 
-.user .field label {
+.user .field label, .custom-select label {
     font-size: 0.8rem;
+    color: #363636;
     padding-left: 0.3125rem;
 }
 
-.user .field input {
+.user .field input, .custom-select .show {
     font-size: 0.875rem;
     font-weight: 600;
+    color: #363636;
     width: 100%;
     text-align: center;
     padding: 0.75rem 1rem;
@@ -416,8 +452,32 @@ hr {
 
 .orders {
     min-width: 20.5rem;
+    max-width: 20.5rem;
     margin-right: 3.375rem;
 }
+
+.profil_flex .orders {
+    max-width: 100%;
+}
+
+.obligatory_book {
+    min-width: 20.5rem;
+    max-width: 20.5rem;
+    margin-right: 3.375rem;
+}
+
+.obligatory_book .book .change_number {
+    max-width: 100%;
+}
+
+.obligatory_book .obligatory_book_flex {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 1.25rem;
+}
+
 
 .pattern {
     display: block;
@@ -461,12 +521,14 @@ hr {
 .order .order_number {
     font-size: 1rem;
     font-style: italic;
+    color: #363636;
     padding-bottom: 0.5rem;
     border-bottom: 2px solid #D1D1D1;
     margin-bottom: 0.5rem;
 }
 
 .link {
+    font-size: 0.8rem;
     padding: 0.75rem 1rem;
     text-decoration: none;
     text-align: center;
@@ -489,7 +551,19 @@ hr {
     width: 100%;
 }
 
-.paid_order_form input {
+.no_book {
+    padding: 0.5rem;
+}
+.no_obligatory_book {
+    display: block;
+    width: 100%;
+    padding: 1rem;
+    background-color: #FFFFFF;
+    border-radius: 7px;
+    box-shadow: 3px 3px 4px rgba(0,0,0,0.16);
+}
+
+.paid_order_form input, .paid_order_form a {
     margin: 0 auto;
 }
 
@@ -509,12 +583,13 @@ hr {
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: flex-start;
-    gap: 2.5rem;
+    gap: 1.25rem;
 }
 
 .book_flex .book {
     width: calc(50% - 1.25rem);
 }
+
 
 .book {
     display: flex;
@@ -548,7 +623,7 @@ hr {
 }
 
 .book .img {
-    flex: 3;
+    flex: 2;
 }
 
 .book .info {
@@ -567,7 +642,9 @@ hr {
 }
 
 .book .edit_detail {
-    line-height: 1.2;
+    font-size: 0.8rem;
+    line-height: 1.1;
+    color: #ACACAC;
     margin: 0.5rem 0 0.5rem;
 }
 
@@ -579,7 +656,6 @@ hr {
 
 .book h4 {
     font-size: 1rem;
-    font-weight: 600;
     color: rgba(54,54,54,0.7);
     margin-bottom: 0.25rem;
 }
@@ -690,4 +766,81 @@ input[type=submit] {
 .order .total .final_price {
     font-size: 1rem;
     font-style: italic;
+}
+
+
+
+
+
+/* The container must be positioned relative: */
+.custom-select {
+    flex: 1;
+    min-width: calc(50% - 1.25rem);
+    max-width: 100%;
+    margin-bottom: 2.1875rem;
+    margin-left: 2.5rem;
+    position: relative;
+    font-family: Arial;
+}
+
+.custom-select .show {
+    display: block;
+}
+
+.custom-select select {
+    display: none; /*hide original SELECT element: */
+}
+
+
+/* Style the arrow inside the select element: */
+.select-selected:after {
+    position: absolute;
+    content: "";
+    top: 50%;
+    right: 10px;
+    transform: translate(-50%, 50%);
+    width: 0;
+    height: 0;
+    border: 6px solid transparent;
+    border-color: #363636 transparent transparent transparent;
+}
+
+/* Point the arrow upwards when the select box is open (active): */
+.select-selected.select-arrow-active:after {
+    border-color: transparent transparent #363636 transparent;
+    transform: translateX(-7px);
+}
+
+/* style the items (options), including the selected item: */
+.select-items div,.select-selected {
+    font-size: 0.875rem;
+    font-weight: 600;
+    width: 100%;
+    color: #363636;
+    text-align: center;
+    padding: 0.75rem 1rem;
+    border: 2px solid #F2F2F2;
+    border-radius: 6px;
+    background-color: #FFFFFF;
+    margin-top: 0.3125rem;
+}
+
+/* Style items (options): */
+.select-items {
+    height: 9rem;
+    overflow-y: scroll;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 99;
+}
+
+/* Hide the items when the select box is closed: */
+.select-hide {
+    display: none;
+}
+
+.select-items div:hover, .same-as-selected {
+    background-color: rgba(0, 0, 0, 0.1);
 }

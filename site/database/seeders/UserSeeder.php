@@ -34,10 +34,9 @@ class UserSeeder extends Seeder
             'name' => 'Hoens',
             'first_name' => 'Anthony',
             'slug' => Str::slug($name . ' ' . $firstName),
-            'image' => 'image.png',
+            'image' => 'hoens-anthony.jpeg',
             'email' => 'hoens.anthony@student.hepl.be',
             'email_verified_at' => now(),
-            'group' => '2285',
             'password' => Hash::make('anthony'),
             'remember_token' => Str::random(10),
         ]);
