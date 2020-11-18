@@ -8,6 +8,6 @@ use Illuminate\Http\Request;
 class AdminOrderController extends Controller
 {
     public function index() {
-        return view('home.index');
+        return view('app.admin.order.index');
     }
 }

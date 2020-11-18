@@ -73,6 +73,11 @@ class User extends Authenticatable
         return $this->roles->pluck('name')->contains('Admin');
     }
 
+    public function getFullNameAttribute()
+    {
+        return $this->name . ' ' . $this->first_name;
+    }
+
     public function getIsOrderAdminAttribute(): bool
     {
         return $this->orders->pluck('user_id')->contains(Auth::id());

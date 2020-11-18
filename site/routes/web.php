@@ -101,8 +101,12 @@ Route::prefix('admin')->middleware(['auth', 'can:getAdminAccess'])->group(functi
     Route::get('/', [App\Http\Controllers\Admin\AdminHomeController::class, 'index'])
         ->name('admin.home.page');
 
-    Route::get('/profil/', [App\Http\Controllers\Admin\AdminProfilController::class, 'index'])
-        ->name('admin.profile.page');
+    Route::get('/profil/', function () {
+        return redirect()->route('admin.profile.show', Auth::user()->slug);
+    })->name('admin.profile.page');
+
+    Route::get('/profil/{user:slug}', [App\Http\Controllers\Admin\AdminProfilController::class, 'show'])
+        ->name('admin.profile.show');
 
     Route::get('/books', [App\Http\Controllers\Admin\AdminBookController::class, 'index'])
         ->name('admin.book.page');

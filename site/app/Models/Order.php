@@ -10,6 +10,7 @@ class Order extends Model
 {
     use HasFactory;
 
+    protected $dates = ['validated_at'];
     protected $fillable = [
         'user_id',
     ];
@@ -26,9 +27,19 @@ class Order extends Model
             ->withPivot('quantity');
     }
 
+    public function statuts()
+    {
+        return $this->belongsToMany(Statut::class);
+    }
+
     public function getIdOfBooksAttribute()
     {
         return $this->books->pluck('id');
+    }
+
+    public function getCloturedDateAttribute()
+    {
+        return $this->validated_at->isoFormat('LLLL');
     }
 
     public function getIsAdminAttribute(): bool

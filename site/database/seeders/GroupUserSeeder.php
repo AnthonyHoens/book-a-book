@@ -17,7 +17,6 @@ class GroupUserSeeder extends Seeder
     public function run()
     {
         $users = User::all();
-        $users = $users->skip(1);
 
         $group = Group::all();
 

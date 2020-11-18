@@ -22,6 +22,10 @@ class OrderSeeder extends Seeder
     {
         $users = User::all();
         $countBook = Book::all()->count();
+        $validated_at = [
+            now(),
+            null,
+        ];
 
         foreach ($users as $user) {
             $total = 0;
@@ -29,7 +33,7 @@ class OrderSeeder extends Seeder
             $order = new Order();
             $order->user_id = $user->id;
             $order->order_number = $this->randomNumber(32);
-            $order->validated_at = null;
+            $order->validated_at = $validated_at[rand(0, count($validated_at) - 1)];
             $order->save();
 
 
