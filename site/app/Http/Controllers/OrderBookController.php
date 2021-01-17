@@ -39,9 +39,13 @@ class OrderBookController extends Controller
             ->where('order_id', '=', \request('order_id'))
             ->first();
         $oldQuantity = $book->quantity;
-
         $book->quantity = \request('quantity');
-        $book->save();
+
+        if (\request('quantity') == 0) {
+            $book->delete();
+        } else {
+            $book->save();
+        }
 
         event(new UpdateBookToOrderEvent(\request('order_id'), \request()->user(), $book, $oldQuantity));
 

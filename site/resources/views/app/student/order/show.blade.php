@@ -1,7 +1,7 @@
 <x-layout>
     <x-slot name="title">{{ __('Mes commandes')  }}</x-slot>
     <x-slot name="content">
-        <div class="profil_flex">
+        <div class="all_page_flex profil_page profil_container">
             <x-profil-nav></x-profil-nav>
             <hr>
             <section class="orders commands">

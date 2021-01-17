@@ -4,8 +4,14 @@
     </h2>
 
     <div>
-        @foreach($notifications as $message)
-            <x-message :message="$message"></x-message>
-        @endforeach
+        @if($notifications->count())
+            @foreach($notifications as $message)
+                <x-message :message="$message" :userName="false"></x-message>
+            @endforeach
+        @else
+            <p class="book">
+                Vous n'avez pas encore de notification
+            </p>
+        @endif
     </div>
 </section>

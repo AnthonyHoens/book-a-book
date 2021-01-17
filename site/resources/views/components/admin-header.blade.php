@@ -17,11 +17,22 @@
     <div class="profil_info">
 
         <!-- Search Bar -->
-        <form action="" method="get">
-            <x-search-bar></x-search-bar>
-        </form>
+        @livewire('search-bar')
 
         <!--  Profile -->
         <x-user-banner :user="Auth::user()"></x-user-banner>
+        <div id="clicker" class="clicker_open">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
     </div>
 </div>
+
+<div id="menu" class="menu_closed">
+    @livewire('search-bar')
+
+    <x-admin-nav></x-admin-nav>
+</div>
+
+<script src="{{ asset('js/menu.js') }}"></script>

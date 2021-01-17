@@ -7,14 +7,16 @@ use Illuminate\View\Component;
 class Message extends Component
 {
     public $message;
+    public $userName;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($message)
+    public function __construct($message, $userName)
     {
         $this->message = $message;
+        $this->userName = $userName;
     }
 
     /**

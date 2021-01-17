@@ -67,7 +67,7 @@ Route::get('/books', [App\Http\Controllers\BookController::class, 'index'])
     ->name('book.page')
     ->middleware('auth');
 
-Route::get('/books/{book:isbn}', [App\Http\Controllers\BookController::class, 'show'])
+Route::get('/books/{book:slug}', [App\Http\Controllers\BookController::class, 'show'])
     ->name('book.show')
     ->middleware('auth');
 
@@ -91,13 +91,32 @@ Route::get('/notifications', [App\Http\Controllers\NotificationController::class
     ->name('notifs.page')
     ->middleware('auth');
 
-Route::get('/settings', [App\Http\Controllers\SettingsController::class, 'index'])
-    ->name('settings.page')
-    ->middleware('auth');
 
 
 
 Route::prefix('admin')->middleware(['auth', 'can:getAdminAccess'])->group(function () {
+
+    Route::post('/books', [App\Http\Controllers\Admin\AdminBookController::class, 'store'])
+        ->name('admin.book.store');
+
+
+
+    Route::put('/profil/{user:slug}', [App\Http\Controllers\Admin\AdminProfilController::class, 'update'])
+        ->name('admin.profile.update');
+
+    Route::put('/books', [App\Http\Controllers\Admin\AdminBookController::class, 'update'])
+        ->name('admin.book.update');
+
+    Route::put('/orders', [App\Http\Controllers\Admin\AdminOrderUserController::class, 'update'])
+        ->name('admin.order.user.update');
+
+
+
+    Route::delete('/books', [App\Http\Controllers\Admin\AdminBookController::class, 'delete'])
+        ->name('admin.book.delete');
+
+
+
     Route::get('/', [App\Http\Controllers\Admin\AdminHomeController::class, 'index'])
         ->name('admin.home.page');
 
@@ -108,10 +127,28 @@ Route::prefix('admin')->middleware(['auth', 'can:getAdminAccess'])->group(functi
     Route::get('/profil/{user:slug}', [App\Http\Controllers\Admin\AdminProfilController::class, 'show'])
         ->name('admin.profile.show');
 
+    Route::get('/history', [App\Http\Controllers\Admin\AdminHistoryController::class, 'index'])
+        ->name('admin.history.page');
+
+    Route::get('/notifications', [App\Http\Controllers\Admin\AdminNotificationController::class, 'index'])
+        ->name('admin.notifs.page');
+
+    Route::get('/settings', [App\Http\Controllers\Admin\AdminSettingsController::class , 'index'])
+        ->name('admin.settings.page');
+
     Route::get('/books', [App\Http\Controllers\Admin\AdminBookController::class, 'index'])
         ->name('admin.book.page');
 
+    Route::get('/books/create', [App\Http\Controllers\Admin\AdminBookController::class, 'create'])
+        ->name('admin.book.create');
+
     Route::get('/orders', [App\Http\Controllers\Admin\AdminOrderController::class, 'index'])
         ->name('admin.order.page');
+
+    Route::get('/orders/{user:slug}', [App\Http\Controllers\Admin\AdminOrderUserController::class, 'index'])
+        ->name('admin.order.user.page');
+
+    Route::get('/orders/{user:slug}/{order:order_number}', [App\Http\Controllers\Admin\AdminOrderUserController::class, 'show'])
+        ->name('admin.order.user.show');
 });
 

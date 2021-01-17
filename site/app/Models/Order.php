@@ -27,9 +27,9 @@ class Order extends Model
             ->withPivot('quantity');
     }
 
-    public function statuts()
+    public function statut()
     {
-        return $this->belongsToMany(Statut::class);
+        return $this->belongsTo(Statut::class);
     }
 
     public function getIdOfBooksAttribute()

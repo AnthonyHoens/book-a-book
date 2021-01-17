@@ -1,4 +1,7 @@
-<nav role="navigation" class="profil_nav">
+<div class="imgClicker">
+    <img src="{{ asset('images/icons/arrow.svg') }}" class="arrow_right" alt> <span>Afficher la navigation secondaire</span>
+</div>
+<nav role="navigation" class="profil_nav closed">
     <h2 role="heading" aria-level="2" class="title">
         {{ __('Profil') }}
     </h2>
@@ -9,10 +12,11 @@
                                                            || request()->routeIs('order.paid.page')">{{ __('Mes commandes') }}</x-link>
         <x-link href="{{ route('history.page') }}" :active="request()->routeIs('history.page')">{{ __('Historique') }}</x-link>
         <x-link href="{{ route('notifs.page') }}" :active="request()->routeIs('notifs.page')">{{ __('Notifications') }}</x-link>
-        <x-link href="{{ route('settings.page') }}" :active="request()->routeIs('settings.page')">{{ __('Paramètres') }}</x-link>
     </ul>
     <form action="{{ route('logout') }}" method="post" class="logout">
         @csrf
         <input type="submit" id="logout" name="logout" value="{{ __('Se déconnecter') }}">
     </form>
+
+    <script src="{{ asset('js/secondaryNav.js') }}"></script>
 </nav>

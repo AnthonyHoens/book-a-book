@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /* http://meyerweb.com/eric/tools/css/reset/
    v2.0 | 20110126
    License: none (public domain)
@@ -59,12 +63,305 @@ html {
     background-color: #F6F6F6;
 }
 
-.container {
-    padding: 0 3.75rem;
+main {
+    position: relative;
+}
+
+.auth_main {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(100vh - 4rem);
+    padding: 2rem 0;
+}
+
+.auth {
+    flex: 1;
+    min-width: 50%;
+    max-width: 100%;
+}
+
+.forgot {
+    display: block;
+    font-size: .8rem;
+    margin-top: 1rem;
+    color: #363636;
+}
+
+.internal_error {
+    font-size: 1.5rem;
+    font-weight: 600;
+    display: block;
+    min-width: 10rem;
+    padding: 1rem 2rem;
+    border-radius: 6px;
+    color: white;
+    background: #FC612A;
+    text-align: center;
+    margin: 0 auto 3rem;
+}
+
+.internal_error_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(100vh - (56px * 2) - 82px);
+}
+
+.redirect {
+    font-size: .8rem;
+    color: white;
+    padding: 1rem 2rem;
+    background: rgba(0,0,0,0.5);
+    text-align: center;
+    margin: 0 auto;
+ }
+
+.action {
+    width: 100%;
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.action p {
+    font-size: .8rem;
+    font-weight: 600;
+}
+
+.action a {
+    font-size: .8rem;
+    display: inline-block;
+    color: white;
+    background: #363636;
+    padding: .8rem 1.5rem;
+    border-radius: 6px;
+    text-decoration: none;
+}
+
+.success {
+    color: #01C401;
+    margin-bottom: 1rem;
+}
+
+.remove_btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 12px;
+    height: 12px;
+    cursor: pointer;
+}
+
+.info h3 {
+    padding-right: 1.5rem;
+}
+
+.img_file {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    bottom: -6px;
+    right: 0;
+    cursor: pointer;
+}
+
+.container, .profil_container {
+    padding: 0 5%;
+}
+.search_book {
+    display: block;
+    position: absolute;
+    top: 38px;
+    left: 0;
+    right: 0;
+    border-radius: 6px;
+    background: white;
+    overflow: hidden;
+    box-shadow: 0px 2px 6px rgba(0,0,0,0.16);
+}
+.search_book .book {
+    box-shadow: none;
+    border-radius: 0px;
+}
+
+.search_book .book:not(:last-of-type) {
+    border-bottom: 1px solid #D1D1D1;
+}
+
+.all_page_flex {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: stretch;
+    column-gap: 0;
+    row-gap: 2rem;
+}
+
+.clicker_open, .clicker_closed {
+    margin-left: 1.5rem;
+    cursor: pointer;
+}
+
+.clicker_open span, .clicker_closed span {
+    transition: all ease .5s;
+}
+
+.clicker_open span:nth-child(1) {
+    position: relative;
+    display: block;
+    width: 15px;
+    height: 3px;
+    border-radius: 9999px;
+    background: #363636;
+    margin-bottom: 2px;
+}
+
+.clicker_open span:nth-child(2) {
+    position: relative;
+    display: block;
+    width: 15px;
+    height: 3px;
+    border-radius: 9999px;
+    background: #363636;
+    margin-bottom: 2px;
+    opacity: 1;
+}
+
+.clicker_open span:nth-child(3) {
+    position: relative;
+    display: block;
+    width: 15px;
+    height: 3px;
+    border-radius: 9999px;
+    background: #363636;
+}
+
+.clicker_closed span:nth-child(1) {
+    position: relative;
+    display: block;
+    width: 15px;
+    height: 3px;
+    transform: rotate(45deg) translateY(4px);
+    border-radius: 9999px;
+    background: #363636;
+}
+
+.clicker_closed span:nth-child(2) {
+    position: relative;
+    display: block;
+    width: 15px;
+    height: 3px;
+    border-radius: 9999px;
+    background: #363636;
+    opacity: 0;
+}
+
+.clicker_closed span:nth-child(3) {
+    position: relative;
+    display: block;
+    width: 15px;
+    height: 3px;
+    transform: rotate(-45deg) translateY(-4px);
+    border-radius: 9999px;
+    background: #363636;
+}
+
+.menu_open, .menu_closed {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    z-index: 200;
+    position: fixed;
+    padding-top: 100px;
+    align-items: flex-end;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    border-left: 1px solid #DCDCDC;
+    max-width: 22.5rem;
+    background: white;
+    box-shadow: -3px -3px 4px rgba(0,0,0,0.16);
+    transition: all ease .5s;
+}
+
+.menu_open {
+    transform: translateX(0);
+}
+
+.menu_open .search_book, .menu_closed .search_book{
+    display: block;
+    position: relative;
+    width: 100%;
+    border-radius: 6px;
+    background: white;
+    overflow: hidden;
+    margin-bottom: 2rem;
+    box-shadow: 0px 2px 6px rgba(0,0,0,0.16);
+}
+
+.menu_closed{
+    transform: translateX(22.5rem);
+}
+
+.menu_open nav, .menu_closed nav {
+    display: block;
+    flex: 1;
+    width: 100%;
+}
+
+.menu_open ul, .menu_closed ul {
+    flex-direction: column;
+    align-items: flex-end;
+    width: 100%;
+}
+
+.menu_open ul li, .menu_closed ul li {
+    display: block;
+    padding: 0.75rem 3rem;
+    width: 100%;
+    flex: 1 0 100%;
+    text-align: right;
+}
+
+.menu_open ul a, .menu_closed ul a {
+    padding: 0.75rem 0;
+}
+
+.menu_open ul li:not(.active):hover, .menu_closed ul li:not(.active):hover {
+    background-color: rgba(252, 97,42, 0.1);
+    border-left: 2px solid rgba(252, 97,42, 0.3);
+    border-bottom: none;
+}
+.menu_open .active a, .menu_closed .active a{
+    color: #FC612A;
+}
+.menu_open .active, .menu_closed .active  {
+    background-color: rgba(252, 97,42, 0.3);
+    border-left: 2px solid #FC612A;
+    border-bottom: none;
+}
+
+.menu_open .search_bar form, .menu_closed .search_bar form {
+    display: flex;
+}
+
+.menu_open .search_bar, .menu_closed .search_bar {
+    display: block;
+    width: calc(100% - 6rem);
+    flex: none;
+    margin: 0 3rem 2rem;
+}
+
+.admin_orders .all_page_flex {
+    row-gap: 0;
 }
 
 .sr-only {
-    position: absolute;
     width: 1px;
     height: 1px;
     padding: 0;
@@ -86,12 +383,69 @@ html {
     white-space: normal;
 }
 
-header .container {
+.imgClicker {
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    position: absolute;
+    top: 15px;
+    left: 3.75rem;
+    z-index: 100;
+    cursor: pointer;
+}
+
+.imgClicker span {
+    font-size: .8rem;
+    font-weight: 600;
+}
+
+.arrow_right {
+    transform: rotate(180deg);
+}
+
+.arrow_left {
+    transform: rotate(0deg);
+}
+
+.imgClicker img {
+    width: 1.2rem;
+    margin-right: .5rem;
+    transition: all ease .5s;
+}
+
+.open {
+    position: fixed;
+    padding-top: calc(3.5rem + 82px);
+    top: 0;
+    left: 0;
+    z-index: 3;
+    bottom: 0;
+    box-shadow: 3px 3px 4px rgba(0,0,0,0.16);
+    transform: translateX(0);
+    transition: all .5s ease;
+}
+
+.closed {
+    position: fixed;
+    padding-top: calc(3.5rem + 82px);
+    top: 0;
+    left: 0;
+    z-index: 3;
+    bottom: 0;
+    box-shadow: 3px 3px 4px rgba(0,0,0,0.16);
+    transform: translateX(-22.5rem);
+    transition: all .5s ease;
+}
+
+header .container {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     background-color: #FFFFFF;
     box-shadow: 0 5px 5px rgba(0,0,0,0.16);
+    z-index: 9999;
+    min-height: 82px;
 }
 
 header ul {
@@ -127,6 +481,7 @@ header .logo {
     flex: 1;
 }
 header nav {
+    display: none;
     flex: 4;
 }
 header .profil_info {
@@ -135,7 +490,7 @@ header .profil_info {
 
 .profil_info {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
 }
 
@@ -143,10 +498,12 @@ strong {
     font-weight: 600;
 }
 
-header form {
-    width: 40%;
+header .search_bar {
+    display: none;
+    flex: 3;
     min-width: 10rem;
-    display: flex;
+}
+header form {
     justify-content: flex-start;
     background-color: #F6F6F6;
     box-shadow: 0 3px 6px rgba(0,0,0,0.16);
@@ -171,11 +528,7 @@ header form input::placeholder {
 }
 
 main {
-    padding: 3.125rem 0;
-}
-
-.orders .margin_link {
-    margin-bottom: 3rem;
+    padding: 3.5rem 0;
 }
 
 .quantity {
@@ -235,9 +588,10 @@ main {
 }
 
 .profil_nav {
-    position: relative;
     min-width: 22.5rem;
+    max-width: 100%;
     display: inline-block;
+    background: #F6F6F6;
 }
 
 .profil_nav h2 {
@@ -245,6 +599,8 @@ main {
 }
 
 .title {
+    display: block;
+    width: 100%;
     font-size: 1.5rem;
     font-weight: 800;
     margin-bottom: 2rem;
@@ -311,6 +667,7 @@ main {
 
 .profil_flex .remove_link {
     float: right;
+    cursor: pointer;
 }
 
 .profil_flex .remove_link::after {
@@ -321,34 +678,44 @@ main {
 }
 
 hr {
+    display: none;
     transform: translateX(-2px);
-    z-index: -1;
-    border-right: 1px solid #D1D1D1;
-    border-left: 1px solid #D1D1D1;
-    background-color: #D1D1D1;
+    border-style: solid;
+    border-color: #DCDCDC;
     margin: 0;
 }
 
-.user, .message, .profil_flex .commands {
+.user, .message, .profil_flex .commands, .orders {
+    width: 100%;
     display: inline-block;
     flex: 1;
-    padding: 2rem 13.125rem 0;
+    padding: 0 5%;
 }
 
-.user form {
+.special_orders {
+    padding: 0;
+}
+
+.user form, .book_form form {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: flex-start;
+    row-gap: 1rem;
+    column-gap: 2rem;
 }
 
-.user form .error {
+.user form .error, .book_form form .error {
     font-size: 0.8rem;
     font-weight: 600;
     font-style: italic;
     color: #E63B4A;
-    margin-top: 0.3rem;
+    margin-top: .3rem;
+}
+
+.is-invalid {
+    border-color: #E63B4A;
 }
 
 .user__info {
@@ -366,8 +733,12 @@ hr {
     min-width: 8.125rem;
     max-width: 9.375rem;
     border-radius: 9999px;
-    margin-right: 2.5rem;
     overflow: hidden;
+}
+
+.user__img__container {
+    margin-right: 2.5rem;
+    position: relative;
 }
 
 .user__img img {
@@ -391,28 +762,23 @@ hr {
     margin-top: 0.3125rem;
 }
 
-.user .field {
+.user .field , .book_form .field, .special_field{
     flex: 1;
-    min-width: calc(50% - 1.25rem);
-    max-width: 100%;
-    margin-bottom: 2.1875rem;
+    min-width: 100%;
 }
 
-.user .field:last-of-type {
+.user .field:last-of-type, .book_form .field:last-of-type{
     align-self: stretch;
 }
 
-.user .field:nth-child(odd) {
-    margin-left: 2.5rem;
-}
-
-.user .field label, .custom-select label {
+.user .field label, .custom-select label, .book_form .field label {
     font-size: 0.8rem;
     color: #363636;
     padding-left: 0.3125rem;
 }
 
-.user .field input, .custom-select .show {
+.user .field input, .custom-select .show , .book_form .field input, .book_form .field textarea{
+    font-family: 'Open Sans', sans-serif;
     font-size: 0.875rem;
     font-weight: 600;
     color: #363636;
@@ -425,13 +791,32 @@ hr {
     margin-top: 0.3125rem;
 }
 
-.user .submit {
+.user .field input::placeholder, .book_form .field input::placeholder, .book_form .field textarea::placeholder {
+    color: rgba(54,54,54,0.25);
+}
+
+.special_field input {
+    color: #363636;
+    border: 2px solid #F2F2F2;
+    border-radius: 6px;
+    background-color: #FFFFFF;
+}
+
+.book_form {
+    order: -1;
+}
+
+.auth_logo {
+    margin-bottom: 1rem;
+}
+
+.submit, .auth_logo{
     width: 100%;
     display: block;
     text-align: center;
 }
 
-.user .submit input {
+.submit input {
     font-size: 0.8rem;
     color: #FFFFFF;
     background-color: #FC612A;
@@ -445,19 +830,14 @@ hr {
 }
 
 .orders {
+    flex: 1;
     min-width: 20.5rem;
-    max-width: 20.5rem;
-    margin-right: 3.375rem;
-}
-
-.profil_flex .orders {
     max-width: 100%;
 }
 
 .obligatory_book {
     min-width: 20.5rem;
-    max-width: 20.5rem;
-    margin-right: 3.375rem;
+    max-width: 100%;
 }
 
 .obligatory_book .book .change_number {
@@ -492,15 +872,16 @@ hr {
     margin-bottom: 0.5rem;
 }
 
-.pattern small {
-    font-size: 0.8rem;
-    margin-bottom: 0.5rem;
-    position: absolute;
-    top: 0.5rem;
-    right: 0.5rem;
+.pattern .small {
+    margin-bottom: .5rem;
 }
 
-.pattern small:first-letter {
+.pattern small {
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.pattern .small:first-letter {
     text-transform: uppercase;
 }
 
@@ -533,9 +914,11 @@ hr {
     border-radius: 6px;
     background-color: #FC612A;
     box-shadow: 0 3px 6px #FC612A;
+    cursor: pointer;
 }
 
 .special_link {
+    cursor: pointer;
     display: block;
     min-width: 100%;
 }
@@ -567,29 +950,28 @@ hr {
     margin-bottom: 0.5rem;
 }
 
-.book_container {
-    padding-left: 2.5rem;
-}
-
 .book_flex {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: stretch;
     gap: 1.25rem;
 }
 
 .book_flex .book {
-    width: calc(50% - 1.25rem);
+    flex: 1 0 100%;
 }
 
+.obligatory {
+    margin-bottom: 2rem;
+}
 
 .book {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: center;
+    align-items: stretch;
     padding: 1rem;
     border-radius: 9px;
     background-color: #ffffff;
@@ -598,14 +980,20 @@ hr {
 
 .order_flex {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-around;
-    align-items: center;
+    align-items: stretch;
+    column-gap: 3rem;
+}
+
+.order_flex .link {
+    margin-bottom: 2rem;
 }
 
 .order_flex .remove_link {
     background-color: #E63B4A;
     box-shadow: 0 3px 6px #E63B4A;
+    margin-bottom: 2rem;
 }
 
 .order .book {
@@ -616,16 +1004,42 @@ hr {
     margin-bottom: 0;
 }
 
-.book .img {
-    flex: 2;
+.flex-3 {
+    width: 100%;
+    flex: 3;
+}
+
+.flex-7 {
+    width: 100%;
+    flex: 7;
+}
+
+.book_show .book {
+    width: 100%;
+}
+
+.book .publishers {
+    color: rgba(54,54,54,0.7);
+    margin-bottom: .5rem;
+}
+
+.isbn {
+    font-size: .8rem;
+    font-style: italic;
+    color: rgba(54,54,54,0.7);
 }
 
 .book .info {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: space-between;
     flex: 7;
 }
 
 .book .img {
-    width: 40%;
+    width: 8rem;
     height: 100%;
     overflow: hidden;
     margin-right: 1rem;
@@ -642,19 +1056,27 @@ hr {
     margin: 0.5rem 0 0.5rem;
 }
 
+
+
 .book h3 {
     font-size: 1rem;
     font-weight: 600;
     margin-bottom: 0.5rem;
 }
 
+.book h3 a {
+    color: rgba(54,54,54,1);
+    text-decoration: none;
+}
+
 .book h4 {
     font-size: 1rem;
-    color: rgba(54,54,54,0.7);
+    color: rgba(54,54,54,0.9);
     margin-bottom: 0.25rem;
 }
 
 .main_flex .remove_link {
+    cursor: pointer;
     width: 100%;
 }
 
@@ -662,6 +1084,13 @@ hr {
     padding: 0.5rem;
     background-color: #E63B4A;
     box-shadow: none;
+    cursor: pointer;
+}
+
+.book .price_text {
+    font-size: 0.8rem;
+    font-weight: 700;
+    margin-bottom: .5rem;
 }
 
 .book .price {
@@ -672,6 +1101,11 @@ hr {
 
 .book .calculed_price {
     width: 60%;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.stock {
     font-size: 0.8rem;
     font-weight: 600;
 }
@@ -771,8 +1205,6 @@ input[type=submit] {
     flex: 1;
     min-width: calc(50% - 1.25rem);
     max-width: 100%;
-    margin-bottom: 2.1875rem;
-    margin-left: 2.5rem;
     position: relative;
     font-family: Arial;
 }
@@ -837,4 +1269,256 @@ input[type=submit] {
 
 .select-items div:hover, .same-as-selected {
     background-color: rgba(0, 0, 0, 0.1);
+}
+
+.admin_home_page .student_history, .admin_home_page .student_orders {
+    flex: 1;
+    width: 100%;
+}
+
+.admin_home_page .message {
+    width: 100%;
+    padding: 0;
+}
+
+.student_order {
+    width: 100%;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 3px 3px 4px rgba(0,0,0,0.16);
+    background: #F1F1F1;
+}
+
+.student_order .profil_img {
+    margin-right: .5rem;
+}
+
+.student_order h3 {
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.student_order h3 a {
+    text-decoration: none;
+    color: #363636;
+}
+
+.student_order small {
+    font-size: 0.8rem;
+    display: block;
+    margin-bottom: .5rem;
+}
+.student_order .more_info {
+    text-align: right;
+}
+
+.student_order {
+    margin-bottom: 1.5rem;
+}
+
+.student_order .order_user_info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: .5rem 1rem;
+    background: #F7DFD7;
+}
+
+.student_order .order_user_name {
+    display: flex;
+    align-items: center;
+}
+
+.admin_orders .book {
+    border-radius: 0;
+    box-shadow: none;
+}
+
+.book .img {
+    display: none;
+}
+
+.admin_book_container {
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 3px 3px 4px rgba(0,0,0,0.16);
+}
+
+.admin_orders .book:not(:last-of-type) {
+    border-bottom: 1px solid #DCDCDC;
+}
+
+.student_order .order_link {
+    font-size: .8rem;
+    padding: .2rem .5rem;
+    border-radius: 3px;
+    text-decoration: none;
+    color: white;
+    background: #FC612A;
+    border: none;
+    cursor: pointer;
+}
+
+form .order_link {
+    margin-top: .5rem;
+}
+
+.student_order .order_statut_flex, .student_order .order_total_flex {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1.25rem;
+}
+
+.admin_home_page hr, .student_order hr {
+    transform: translateX(0);
+    margin: 0 1.25rem;
+}
+
+.in_preparation {
+    width: 100%;
+    flex: 3;
+}
+
+.add_book {
+    margin-bottom: 1.5rem;
+}
+
+.add_book .link {
+    display: inline-block;
+}
+
+.admin .book {
+    flex: 1 0 45%;
+}
+
+.ordered {
+    width: 100%;
+    flex: 7;
+    order: -1;
+}
+
+.admin_orders .student_order {
+    flex: 1 0 45%;
+}
+
+.student_order .order_def {
+    font-size: .8rem;
+    font-weight: 600;
+    color: #363636;
+    text-transform: uppercase;
+}
+
+.student_order .order_text {
+    font-size: .8rem;
+}
+
+@media screen and (min-width: 1000px) {
+    hr {
+        display: block;
+    }
+    .auth {
+        flex: none;
+    }
+    .container {
+        padding: 0 3.75rem;
+    }
+    .profil_container {
+        padding: 0;
+    }
+    .all_page_flex {
+        flex-direction: row;
+        column-gap: 3rem;
+        row-gap: 0;
+        justify-content: space-between;
+        align-items: stretch;
+    }
+    .admin .book {
+        flex: 1 0 25%;
+    }
+    .ordered {
+        order: 1;
+    }
+    .user, .message, .profil_flex .commands, .orders {
+        display: inline-block;
+        flex: 1;
+        padding: 0rem 5rem 0;
+    }
+    .book_form {
+        order: 1;
+        padding: 0 5%;
+    }
+    .order .book h3 {
+        padding-right: 1.5rem;
+    }
+    .book_form form {
+        row-gap: 2rem;
+        column-gap: 2rem;
+    }
+    .order_flex {
+        flex-direction: row;
+        align-items: center;
+    }
+    .order_flex .link {
+        margin-bottom: 2rem;
+    }
+    .profil_page {
+        row-gap: 0;
+        column-gap: 0;
+    }
+    .open {
+        position: relative;
+        top: 0;
+        box-shadow: none;
+        background: none;
+        padding: 0;
+    }
+    .closed {
+        position: relative;
+        top: 0;
+        transform: translateX(0);
+        box-shadow: none;
+        background: none;
+        padding: 0;
+    }
+    .imgClicker {
+        display: none;
+    }
+    .special_orders {
+        padding: 0;
+    }
+    header nav {
+        display: block;
+    }
+}
+
+
+@media screen and (min-width: 1300px) {
+    .user .field , .book_form .field {
+        min-width: calc(50% - 1.25rem);
+        max-width: 100%;
+    }
+    .book .img {
+        display: block;
+    }
+    header .search_bar {
+        position: relative;
+        display: flex;
+    }
+    header form {
+        display: flex;
+        flex: 1;
+    }
+
+    .clicker_open, .clicker_closed .menu_open, .menu_closed {
+        display: none;
+    }
+    .pattern .small {
+        font-size: 0.8rem;
+        margin-bottom: 0.5rem;
+        position: absolute;
+        top: 0.5rem;
+        right: 0.5rem;
+    }
 }

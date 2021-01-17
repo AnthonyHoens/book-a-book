@@ -1,15 +1,21 @@
 <section class="message">
     <h2 role="heading" aria-level="2" class="title">
-        Historique
+        {{ $title }}
     </h2>
 
     <div>
-        @foreach($histories as $message)
-            <x-message :message="$message"></x-message>
-        @endforeach
+        @if($histories->count())
+            @foreach($histories as $message)
+                <x-message :message="$message" :userName="$userName"></x-message>
+            @endforeach
+        @else
+            <p class="book">
+                Vous n'avez pas encore d'historique
+            </p>
+        @endif
     </div>
 
     <div>
-        {{ $histories->links() }}
+        {{ $histories->links('vendor.pagination.tailwind') }}
     </div>
 </section>

@@ -25,7 +25,6 @@ class DatabaseSeeder extends Seeder
             HistorySeeder::class,
             SaleSeeder::class,
             OrderSeeder::class,
-            OrderStatutSeeder::class,
             GroupSeeder::class,
             GroupUserSeeder::class,
             ObligatoryBooksSeeder::class,

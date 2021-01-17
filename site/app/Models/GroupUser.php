@@ -9,5 +9,7 @@ class GroupUser extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['user_id', 'group_id'];
+
     protected $table = 'group_user';
 }

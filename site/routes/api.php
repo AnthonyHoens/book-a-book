@@ -20,5 +20,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('/test', function (){
-   return \App\Models\Order::with('statuts')->get();
+   return \App\Models\Order::with('statut')->get();
 });

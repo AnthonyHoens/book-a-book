@@ -18,11 +18,12 @@ class AddColumnToUsersTable extends Migration
                 ->after('name');
 
             $table->string('slug')
-                ->after('first_name');
+                ->after('first_name')
+                ->unique();
 
             $table->string('image')
                 ->after('email')
-                ->nullable();
+                ->default('default.jpg');
         });
     }
 

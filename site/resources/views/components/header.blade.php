@@ -14,16 +14,29 @@
     <!-- Navigation -->
     <x-nav></x-nav>
 
+    <!-- Search Bar -->
+    @livewire('search-bar')
+
+
     <!-- Notifications and profile -->
     <div class="profil_info">
-
-        <!-- Search Bar -->
-        <form action="" method="get">
-            <x-search-bar></x-search-bar>
-        </form>
-
         <!--  Profile -->
         <x-user-banner :user="Auth::user()"></x-user-banner>
+
+        <div id="clicker" class="clicker_open">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
     </div>
+
 </div>
+
+<div id="menu" class="menu_closed">
+    @livewire('search-bar')
+
+    <x-nav></x-nav>
+</div>
+
+<script src="{{ asset('js/menu.js') }}"></script>
 

@@ -10,6 +10,7 @@ use App\Policies\OrderPolicy;
 use App\Policies\UserPolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Response;
 
 class AuthServiceProvider extends ServiceProvider
 {

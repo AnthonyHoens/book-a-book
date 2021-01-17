@@ -27,7 +27,7 @@ class SaleSeeder extends Seeder
             Sale::create([
                 'book_id' => $book->id,
                 'starting_price' => $rand,
-                'student_price' => $rand + f_rand(1, 3, 2),
+                'student_price' => $rand - f_rand(1, 3, 2),
             ]);
         }
     }

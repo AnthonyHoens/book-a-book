@@ -21,8 +21,13 @@ trait CreatingImage {
             ->save();
     }
 
-    function saveBook()
+    function saveBook($request, $slug)
     {
+        $url = $slug .'.'. $request->file('book_img')->extension();
 
+        Image::load($request->file('book_img')->storePubliclyAs('/images/books/full/', $url))
+            ->fit(Manipulations::FIT_FILL, 320, 460)
+            ->optimize()
+            ->save();
     }
 }

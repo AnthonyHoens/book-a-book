@@ -20,6 +20,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/paginate.css') }}">
 
 </head>
 <body>
@@ -27,18 +28,21 @@
         {{ config('app.name') }} - Plateforme de livre à prix réduis proposé par Xavier Spirlet
     </h1>
 
-    <!-- Header -->
-    <header>
-        @if(request()->route()->getPrefix())
-            <x-admin-header></x-admin-header>
-        @else
-            <x-header></x-header>
-        @endif
-    </header>
+    @auth
+        <!-- Header -->
+        <header>
+            @if(\Illuminate\Support\Facades\Auth::user()->is_admin)
+                <x-admin-header></x-admin-header>
+            @else
+                <x-header></x-header>
+            @endif
+        </header>
+    @endauth
 
     <!-- Content -->
-    <main>
+    <main  @guest() class="auth_main" @endguest>
         {{ $content }}
     </main>
+    @livewireScripts
 </body>
 </html>

@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Book;
 use App\Models\Order;
 use App\Models\OrderBook;
+use App\Models\Statut;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
@@ -28,12 +29,14 @@ class OrderSeeder extends Seeder
         ];
 
         foreach ($users as $user) {
+            $statutCount = Statut::all()->count();
             $total = 0;
 
             $order = new Order();
             $order->user_id = $user->id;
             $order->order_number = $this->randomNumber(32);
             $order->validated_at = $validated_at[rand(0, count($validated_at) - 1)];
+            $order->statut_id = rand(1, $statutCount);
             $order->save();
 
 

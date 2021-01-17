@@ -15,21 +15,34 @@ class HomeController extends Controller
 {
     public function index()
     {
+        if(Auth::user()->isAdmin) {
+            return redirect()->route('admin.home.page');
+        }
+
         $orders = Order::with('books.authors', 'books.sale')
             ->where('user_id', '=', Auth::id())
             ->where('validated_at', '=', null)
             ->get();
 
-        $books = Book::with('authors', 'sale')
-            ->whereHas('groups', function ($q) {
-                $q->where('groups.id', '=', Auth::user()->group->id);
-            })
-            ->get();
 
-        $order = Order::where('user_id', '=', Auth::id())
-            ->get()->last();
+        $books = Book::with('authors', 'sale', 'groups')->get();
 
-        return view('app.student.home.index', compact('orders','books', 'order'));
+        $otherBooks = $books->filter(function ($book) {
+            return $book->groups->filter(function ($group) {
+                return $group->id != Auth::user()->group->id;
+            })->count();
+        });
+
+        $books = $books->filter(function ($book) {
+            return $book->groups->filter(function ($group) {
+                return $group->id == Auth::user()->group->id;
+            })->count();
+        });
+
+
+        $order = Order::where('user_id', '=', Auth::id())->get()->last();
+
+        return view('app.student.home.index', compact('orders','books', 'order', 'otherBooks'));
     }
 
 }

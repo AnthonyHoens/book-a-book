@@ -20,7 +20,7 @@
         </p>
     @else
         @foreach($order->books as $book)
-            <x-book description="{{ $isdescription }}" :book="$book" :image="$isimage">
+            <x-book description="{{ $isdescription }}" :book="$book" :image="$isimage" :show="false">
                 @if($order->validated_at)
                     <div class="book_info_flex">
                         <p class="calculed_price">
@@ -41,7 +41,7 @@
 
                             <div>
                                 <label for="quantity-{{ $loop->index }}">QTY</label>
-                                <input type="number" name="quantity" id="quantity-{{ $loop->index }}" value="{{ $book->pivot->quantity }}">
+                                <input type="number" name="quantity" id="quantity-{{ $loop->index }}" value="{{ $book->pivot->quantity }}" min="0">
                                 <input type="hidden" name="book_id" value="{{ $book->id }}">
                                 <input type="hidden" name="order_id" value="{{ $order->id }}">
                                 <input type="submit" value="Changer" class="link">

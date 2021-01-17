@@ -23,7 +23,7 @@ class ProfilController extends Controller
     {
         $groups = Group::all();
 
-        return view('app.student.profil.index', compact('user', 'groups'));
+        return view('app.student.profil.show', compact('user', 'groups'));
     }
 
     public function update(UpdateProfilRequest $request, User $user)

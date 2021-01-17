@@ -23,5 +23,8 @@ class StatutSeeder extends Seeder
         Statut::create([
            'name' => 'Livré',
         ]);
+        Statut::create([
+            'name' => 'En préparation',
+        ]);
     }
 }
