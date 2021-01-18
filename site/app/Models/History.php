@@ -10,7 +10,7 @@ class History extends Model
     use HasFactory;
 
     protected $dates = ['created_at'];
-    protected $fillable = ['user_id'];
+    protected $fillable = ['user_id', 'title', 'message'];
 
     public function user()
     {

@@ -13,6 +13,7 @@ use App\Events\ProfileImgCreateEvent;
 use App\Events\RegistrationEvent;
 use App\Events\UpdateBookToOrderEvent;
 use App\Events\UpdateOrderEvent;
+use App\Events\UpdateOrderStatutEvent;
 use App\Listeners\AddBookInHistory;
 use App\Listeners\AddNewUserInHistory;
 use App\Listeners\AddRowToHistory;
@@ -29,6 +30,10 @@ use App\Listeners\OrderCompleteSendAdminMail;
 use App\Listeners\OrderCompleteSendAdminNotification;
 use App\Listeners\OrderModification;
 use App\Listeners\UpdateBookInHistory;
+use App\Listeners\UpdateOrderStatut;
+use App\Listeners\UpdateOrderStatutHistory;
+use App\Listeners\UpdateOrderStatutMail;
+use App\Listeners\UpdateOrderStatutNotification;
 use App\Listeners\UpdatePriceInOrder;
 use App\Listeners\WaitingPaymentNotification;
 use GuzzleHttp\Promise\Create;
@@ -80,8 +85,13 @@ class EventServiceProvider extends ServiceProvider
         DeleteOrderEvent::class => [
             DeleteOrderInHistory::class,
         ],
-        CreateOrderEvent::class  => [
+        CreateOrderEvent::class => [
             CreateOrderInHistory::class,
+        ],
+        UpdateOrderStatutEvent::class => [
+            UpdateOrderStatutNotification::class,
+            UpdateOrderStatutHistory::class,
+            UpdateOrderStatutMail::class,
         ],
         'App\Events\UpdateAccountEvent' => [
             'App\Listeners\UpdateUserInHistory',

@@ -13,7 +13,7 @@
                     <p>
                         <strong>Accompte bancaire :</strong> BE78 0065 4512 4502 1
                     </p>
-                    
+
                     <p>
                         <strong>Communication</strong> : {{ $order->user->name . '-' . $order->user->first_name }}-{{ $order->user->group->number }}
                     </p>

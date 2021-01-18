@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Events\UpdateOrderStatutEvent;
 use App\Http\Controllers\Controller;
 use App\Models\Order;
 use App\Models\Statut;
@@ -55,6 +56,8 @@ class AdminOrderUserController extends Controller
         $order = Order::where('id', '=', \request('order_id'))->first();
         $order->statut_id = \request('statut');
         $order->save();
+
+        event(new UpdateOrderStatutEvent($order));
 
         return redirect()->route('admin.order.page');
     }
