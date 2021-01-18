@@ -1,5 +1,5 @@
 <x-layout>
-    <x-slot name="title">{{ __('Les livres')  }}</x-slot>
+    <x-slot name="title">{{ __('Livres | ' . $book->title)  }}</x-slot>
     <x-slot name="content">
         <div class="container all_page_flex">
             @if (!\Illuminate\Support\Facades\Auth::user()->isAdmin)

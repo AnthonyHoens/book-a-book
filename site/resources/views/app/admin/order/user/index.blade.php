@@ -1,5 +1,5 @@
 <x-layout>
-    <x-slot name="title"></x-slot>
+    <x-slot name="title">Commande de {{ $orders[0]->user->first_name . ' ' . $orders[0]->user->name }}</x-slot>
     <x-slot name="content">
         <div class="all_page_flex admin_orders container">
             <section class="in_preparation">

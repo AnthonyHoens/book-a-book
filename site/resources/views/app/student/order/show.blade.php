@@ -1,5 +1,5 @@
 <x-layout>
-    <x-slot name="title">{{ __('Mes commandes')  }}</x-slot>
+    <x-slot name="title">{{ __('Commandes | ' . $order->order_number)  }}</x-slot>
     <x-slot name="content">
         <div class="all_page_flex profil_page profil_container">
             <x-profil-nav></x-profil-nav>

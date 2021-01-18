@@ -1,5 +1,5 @@
 <x-layout>
-    <x-slot name="title"></x-slot>
+    <x-slot name="title">Commandes des étudiants</x-slot>
     <x-slot name="content">
         <section class="admin_orders container">
             <h2 aria-level="2" role="heading" class="title">

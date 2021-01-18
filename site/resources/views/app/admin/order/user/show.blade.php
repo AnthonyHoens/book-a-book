@@ -1,5 +1,5 @@
 <x-layout>
-    <x-slot name="title"></x-slot>
+    <x-slot name="title">Commande n° {{ $orders->order_number }}</x-slot>
     <x-slot name="content">
         <div class="all_page_flex container admin_orders">
             <section class="in_preparation">

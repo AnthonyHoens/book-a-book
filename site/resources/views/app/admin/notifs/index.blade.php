@@ -1,5 +1,5 @@
 <x-layout>
-    <x-slot name="title">{{ __('Mes commandes')  }}</x-slot>
+    <x-slot name="title">{{ __('Mes notifications')  }}</x-slot>
     <x-slot name="content">
         <div class="all_page_flex profil_page profil_container">
             <x-admin-profil-nav></x-admin-profil-nav>
